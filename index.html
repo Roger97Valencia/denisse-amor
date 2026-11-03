@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Denisse 💜</title>
+
+<style>
+:root {
+  --fondo: #f8f3fc;
+  --lila: #ede2f7;
+  --lavanda: #d8c3ea;
+  --morado: #b99ad8;
+  --violeta: #8965a8;
+  --oscuro: #654879;
+  --blanco: #fffaff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  color: var(--oscuro);
+  background: linear-gradient(145deg, #f8f3fc, #eee2f7, #fffaff);
+  text-align: center;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.oculto { display: none !important; }
+
+/* PORTADA Y SOBRE */
+
+#portada {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+#portada h1 {
+  color: var(--violeta);
+  font-size: 2.3rem;
+  margin-bottom: 8px;
+}
+
+#portada p { line-height: 1.7; }
+
+.sobre {
+  position: relative;
+  width: 230px;
+  height: 165px;
+  margin: 35px auto;
+  background: #b99ad8;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px #8965a844;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: flotar 3s infinite ease-in-out;
+}
+
+.sobre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #d8c3ea;
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  border-radius: 12px 12px 0 0;
+}
+
+.sello {
+  position: relative;
+  z-index: 2;
+  background: #8965a8;
+  color: white;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  box-shadow: 0 3px 12px #65487955;
+}
+
+.abrir {
+  padding: 14px 28px;
+  background: var(--violeta);
+  color: white;
+  border-radius: 30px;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px #8965a844;
+}
+
+@keyframes flotar {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+/* CONTENIDO */
+
+main {
+  max-width: 720px;
+  margin: auto;
+  padding: 20px 17px 50px;
+}
+
+.encabezado { padding: 35px 10px; }
+
+.encabezado h1 {
+  font-size: 2.4rem;
+  color: var(--violeta);
+}
+
+.card {
+  background: var(--blanco);
+  border: 1px solid #eadcf5;
+  border-radius: 24px;
+  padding: 28px 20px;
+  margin: 22px 0;
+  box-shadow: 0 8px 25px #8965a818;
+}
+
+h2 {
+  color: var(--violeta);
+  font-size: 1.65rem;
+}
+
+p {
+  line-height: 1.9;
+  font-size: 1.04rem;
+}
+
+.decoracion {
+  font-size: 25px;
+  letter-spacing: 8px;
+  margin: 12px;
+}
+
+.firma {
+  color: var(--violeta);
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+/* GALERÍA */
+
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.foto {
+  min-height: 155px;
+  border-radius: 17px;
+  background: linear-gradient(145deg, #ede2f7, #d8c3ea);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  color: var(--oscuro);
+}
+
+/* CONTADORES */
+
+.numero {
+  color: var(--violeta);
+  font-size: 1.9rem;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+/* BOTONES */
+
+.boton {
+  display: inline-block;
+  background: var(--violeta);
+  color: white;
+  padding: 13px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+#sorpresa {
+  background: var(--lila);
+  padding: 20px;
+  border-radius: 18px;
+  margin-top: 20px;
+  line-height: 1.9;
+}
+
+footer {
+  padding: 25px 10px;
+  color: #8965a8;
+}
+
+.corazon {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  animation: subir 4s linear forwards;
+  z-index: 10;
+}
+
+@keyframes subir {
+  to {
+    transform: translateY(-110vh) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width:380px) {
+  #portada h1 { font-size: 1.9rem; }
+  .encabezado h1 { font-size: 2rem; }
+}
+</style>
+</head>
+
+<body>
+
+<section id="portada">
+  <div class="decoracion">✧ 💜 ✧</div>
+  <h1>Una carta para ti</h1>
+  <p>Hay algo muy especial que quiero que descubras...</p>
+
+  <div class="sobre" onclick="abrirRegalo()">
+    <div class="sello">♥</div>
+  </div>
+
+  <button class="abrir" onclick="abrirRegalo()">
+    Abrir mi regalo 💌
+  </button>
+
+  <p><small>Con mucho amor, para Denisse.</small></p>
+</section>
+
+<main id="contenido" class="oculto">
+
+  <header class="encabezado">
+    <div class="decoracion">✧ 🌷 💜 🌷 ✧</div>
+    <h1>Feliz cumpleaños, Denisse</h1>
+    <p>Hoy quiero recordarte lo maravillosa que eres.</p>
+  </header>
+
+  <section class="card">
+    <div class="decoracion">💜 ✨ 💜</div>
+    <h2>Mi niña hermosa</h2>
+
+    <p>
+      No sé exactamente por dónde empezar, porque cuando se trata de ti
+      siempre siento que las palabras se quedan cortas.
+      Pero hoy quiero intentar expresarte un poquito de todo lo que
+      significas para mí.
+    </p>
+
+    <p>
+      Primero quiero desearte un cumpleaños muy feliz. Espero que este
+      nuevo año de vida esté lleno de momentos bonitos, sueños cumplidos,
+      oportunidades y muchísimas razones para sonreír.
+      Deseo de corazón que la vida te regale cosas tan bonitas como
+      las que tú transmites.
+    </p>
+
+    <p>
+      Quiero que sepas que te admiro muchísimo. Me encanta la persona
+      que eres, lo importante que puedes llegar a ser, lo interesante
+      que resulta conocerte y esa inteligencia que tienes.
+      Me gusta descubrir cada parte de ti y seguir encontrando motivos
+      para sentirme orgulloso de tenerte en mi vida.
+    </p>
+
+    <p>
+      Me importas más de lo que a veces consigo expresar.
+      Me preocupa que estés bien, que te sientas tranquila,
+      que no te falten motivos para sonreír y que siempre recuerdes
+      lo valiosa que eres.
+    </p>
+
+    <p>
+      Eres mi primer pensamiento al despertar y mi último pensamiento
+      antes de dormir. Incluso en los días más normales, de alguna
+      manera siempre terminas apareciendo en mi mente.
+    </p>
+
+    <p>
+      No quiero que esta carta sea solamente un mensaje de cumpleaños.
+      Quiero que sea un pequeño recordatorio de que tienes a alguien
+      que te quiere, te admira, se preocupa por ti y desea verte feliz.
+    </p>
+
+    <p>
+      Gracias por ser tú, por compartir conmigo esta historia y por
+      hacer que desde aquel 1 de febrero de 2026 mi vida tenga
+      recuerdos que quiero conservar.
+    </p>
+
+    <p>
+      Ojalá podamos seguir escribiendo muchos capítulos juntos,
+      llenos de risas, cariño, aventuras y momentos que algún día
+      recordemos con una sonrisa.
+    </p>
+
+    <p class="firma">
+      Te quiero muchísimo, Denisse. 💜
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Nuestros recuerdos 📸</h2>
+    <p>
+      Cada fotografía guarda un pedacito de nuestra historia.
+      Aquí tendremos un lugar para nuestros momentos favoritos.
+    </p>
+
+    <div class="galeria">
+      <div class="foto">🌷 Nuestra primera foto</div>
+      <div class="foto">💜 Un momento especial</div>
+      <div class="foto">✨ Una sonrisa tuya</div>
+      <div class="foto">🥰 Un recuerdo juntos</div>
+    </div>
+
+    <p><small>Pronto podremos poner nuestras fotografías reales aquí.</small></p>
+  </section>
+
+  <section class="card">
+    <h2>Desde que comenzó nuestra historia</h2>
+    <p>1 de febrero de 2026</p>
+    <div class="numero" id="dias">...</div>
+    <p>días compartiendo esta historia tan bonita.</p>
+  </section>
+
+  <section class="card">
+    <h2>Una canción para ti 🎶</h2>
+    <p>
+      Hay canciones que parecen tener un poquito de nuestros sentimientos.
+      Esta siempre me hace pensar en ti.
+    </p>
+    <p><strong>Enamorado tuyo — El Cuarteto de Nos</strong></p>
+    <a class="boton"
+       href="https://open.spotify.com/search/Enamorado%20tuyo%20El%20Cuarteto%20de%20Nos"
+       target="_blank" rel="noopener">
+      Escuchar nuestra canción 🎵
+    </a>
+  </section>
+
+  <section class="card">
+    <h2>Una última sorpresa 💌</h2>
+    <p>
+      Todavía tengo algo más que decirte...
+    </p>
+
+    <button class="abrir" onclick="mostrarSorpresa()">
+      Toca aquí, mi amor 💜
+    </button>
+
+    <div id="sorpresa" class="oculto">
+      <h2>Siempre tú. ❤️</h2>
+      <p>
+        Si pudiera pedir un deseo para hoy, sería que nunca te falten
+        motivos para ser feliz, que nunca dudes de lo especial que eres
+        y que la vida te permita cumplir cada uno de tus sueños.
+      </p>
+      <p>
+        Y si me permites seguir siendo parte de tu historia,
+        quiero continuar demostrándote lo mucho que significas para mí.
+      </p>
+      <div class="decoracion">💜 🌷 ✨ 💜</div>
+      <p class="firma">Con todo mi cariño, para ti.</p>
+    </div>
+  </section>
+
+  <footer>
+    Hecho con mucho amor, solamente para Denisse. 💜
+    <p>Una historia que quiero seguir escribiendo contigo.</p>
+  </footer>
+
+</main>
+
+<script>
+function abrirRegalo() {
+  document.getElementById("portada").classList.add("oculto");
+  document.getElementById("contenido").classList.remove("oculto");
+  window.scrollTo(0, 0);
+}
+
+function mostrarSorpresa() {
+  document.getElementById("sorpresa").classList.toggle("oculto");
+  lanzarCorazones();
+}
+
+function lanzarCorazones() {
+  const simbolos = ["💜", "💗", "✨", "🌷"];
+  for (let i = 0; i < 18; i++) {
+    const corazon = document.createElement("div");
+    corazon.className = "corazon";
+    corazon.textContent =
+      simbolos[Math.floor(Math.random() * simbolos.length)];
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (18 + Math.random() * 20) + "px";
+    document.body.appendChild(corazon);
+    setTimeout(() => corazon.remove(), 4000);
+  }
+}
+
+function actualizarDias() {
+  const inicio = new Date(2026, 1, 1);
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  const diferencia = Math.floor((hoy - inicio) / 86400000);
+  document.getElementById("dias").textContent =
+    diferencia >= 0 ? diferencia : "Nuestra historia comienza pronto";
+}
+
+actualizarDias();
+</script>
+
+</body>
+</html>
