@@ -1,912 +1,654 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#eee2f7">
+<meta name="theme-color" content="#eadcf7">
 <title>Para Denisse 💜</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
 
 body {
-  font-family: Georgia, 'Times New Roman', serif;
-  background: linear-gradient(135deg,#f9f4fc,#eee2f7,#faf6ff);
-  color: #624477;
-  text-align: center;
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f8f0ff;
+  color: #49345d;
   overflow-x: hidden;
 }
 
-body.bloqueado { overflow: hidden; }
+button { font-family: inherit; cursor: pointer; }
+.hidden { display: none !important; }
 
-.contenedor {
-  width: 100%;
-  max-width: 850px;
-  margin: auto;
-  padding: 25px 18px 55px;
-}
-
-h1 {
-  color: #8056a0;
-  font-size: clamp(2rem,7vw,3rem);
-  margin: 20px 0 12px;
-}
-
-h2 {
-  color: #8056a0;
-  font-size: 1.7rem;
-  margin-bottom: 18px;
-}
-
-p {
-  line-height: 1.8;
-  font-size: 1.04rem;
-}
-
-.subtitulo {
-  color: #987bb0;
-  font-style: italic;
-}
-
-.decoracion {
-  margin: 20px;
-  font-size: 25px;
-  letter-spacing: 7px;
-}
-
-.seccion {
-  margin: 65px auto;
-}
-
-/* PANTALLA INICIAL */
-
+/* SOBRE */
 #inicio {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 25px;
-  background:
-    radial-gradient(circle at 50% 40%,#fffaff,#eee0f8 65%,#ddc8ed);
-  transition: opacity 1.2s ease, visibility 1.2s ease;
+  text-align: center;
+  background: linear-gradient(145deg,#f9efff,#e5d0f5);
 }
 
-#inicio.oculto {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+#inicio h1 {
+  font-size: 2rem;
+  margin-bottom: 35px;
 }
 
-.inicio-titulo {
-  color: #8056a0;
-  font-size: clamp(2rem,8vw,3rem);
-  margin-bottom: 12px;
-}
-
-.inicio-texto {
-  max-width: 350px;
-  color: #8f70a8;
-  margin-bottom: 30px;
-}
-
-.sobre {
+.envelope {
   position: relative;
-  width: 270px;
-  height: 170px;
-  background: #8056a0;
-  border-radius: 9px;
-  box-shadow: 0 15px 35px #8056a055;
+  width: min(300px,85vw);
+  height: 190px;
+  background: #b995d6;
+  border-radius: 5px;
+  box-shadow: 0 12px 30px #80639455;
   cursor: pointer;
-  transition: transform .5s;
+  perspective: 800px;
 }
 
-.sobre:hover { transform: translateY(-6px); }
-
-.sobre::before {
+.envelope::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  border-left: 135px solid transparent;
-  border-right: 135px solid transparent;
-  border-top: 95px solid #b99bd1;
-  z-index: 2;
+  inset: 0;
+  background: #d9bce9;
+  clip-path: polygon(0 0,50% 58%,100% 0);
+  z-index: 3;
   transform-origin: top;
   transition: transform .8s;
 }
 
-.sobre.abierto::before {
-  transform: rotateX(180deg);
-}
-
-.sobre::after {
+.envelope::after {
   content: "💜";
   position: absolute;
-  top: 75px;
-  left: 0;
-  right: 0;
-  font-size: 36px;
-  z-index: 3;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%,-50%);
+  font-size: 38px;
+  z-index: 4;
 }
 
-.boton {
-  background: linear-gradient(135deg,#a47ac3,#79539a);
-  color: white;
+.envelope.open::before { transform: rotateX(180deg); }
+
+.envelope-label {
+  margin-top: 25px;
+  font-size: 1rem;
+  color: #694c80;
+}
+
+/* CARTA */
+#carta {
+  min-height: 100svh;
+  padding: 25px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg,#f8efff,#e8d8f5);
+}
+
+.letter {
+  width: min(500px,100%);
+  padding: 30px 24px;
+  background: #fffdfb;
+  border-radius: 5px;
+  box-shadow: 0 12px 35px #72598730;
+  line-height: 1.8;
+  text-align: center;
+  animation: appear .8s ease;
+}
+
+.letter h2 {
+  color: #9165ae;
+  font-size: 1.8rem;
+}
+
+.letter p { font-size: 1.04rem; }
+
+.primary {
   border: none;
-  padding: 13px 23px;
   border-radius: 30px;
-  font-size: 15px;
-  font-family: inherit;
-  cursor: pointer;
-  margin: 8px;
-  box-shadow: 0 5px 15px #8056a044;
-  transition: transform .3s, box-shadow .3s;
+  padding: 13px 25px;
+  color: white;
+  background: #9b72b8;
+  font-size: 1rem;
+  margin-top: 18px;
+  box-shadow: 0 5px 15px #8c65a533;
 }
 
-.boton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px #8056a066;
-}
-
-#botonAbrir { margin-top: 28px; }
-
-/* CARTA DE INTRODUCCIÓN */
-
-#cartaInicial {
-  display: none;
+/* CORAZONES */
+#corazones {
   position: fixed;
   inset: 0;
-  z-index: 110;
-  background: linear-gradient(135deg,#f8effc,#e8d9f2);
-  overflow-y: auto;
-  padding: 30px 18px;
-}
-
-#cartaInicial.visible {
+  z-index: 20;
+  background: radial-gradient(circle,#f9edff,#e5d0f5);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: aparecer 1s ease;
+  opacity: 1;
+  transition: opacity 1.3s ease;
 }
 
-.carta-papel {
-  width: 100%;
-  max-width: 540px;
-  background: #fffdfd;
-  border: 1px solid #e3d2ed;
-  border-radius: 18px;
-  padding: 30px 23px;
-  box-shadow: 0 15px 40px #8056a033;
-}
-
-.carta-papel h2 { margin-bottom: 20px; }
-
-.carta-papel p {
-  margin: 13px 0;
-  text-align: left;
-}
-
-.carta-papel .centrado { text-align: center; }
-
-#botonContinuar { margin-top: 20px; }
-
-/* ANIMACIÓN DE LA D */
-
-#escenaD {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 120;
-  background: radial-gradient(circle,#f8edff,#d9c0ec);
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-
-#escenaD.visible {
-  display: flex;
-  animation: aparecer 1s ease;
-}
-
-#lluvia {
-  position: absolute;
-  inset: 0;
+#heartCanvas {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
-.letraD {
-  position: relative;
-  z-index: 2;
-  color: #8056a0;
-  font-size: clamp(180px,55vw,320px);
-  font-family: Georgia,serif;
-  font-weight: bold;
+#corazones.fade {
   opacity: 0;
-  text-shadow: 0 0 30px #c59ce9,0 0 65px #a47ac3;
-  transform: scale(.5);
-  transition: opacity 1s,transform 1.5s;
+  pointer-events: none;
 }
 
-.letraD.visible {
-  opacity: .95;
-  transform: scale(1);
-}
-
-.mensajeD {
-  position: absolute;
-  z-index: 3;
-  bottom: 14%;
-  width: 100%;
-  padding: 0 15px;
-  color: #8056a0;
-  font-size: 1.3rem;
-  font-style: italic;
-  opacity: 0;
-  transition: opacity 1.5s;
-}
-
-.mensajeD.visible { opacity: 1; }
-
-/* CONTENIDO PRINCIPAL */
-
+/* PÁGINA PRINCIPAL */
 #contenido {
-  opacity: 0;
-  transition: opacity 1.5s;
-}
-
-#contenido.visible { opacity: 1; }
-
-.portada { padding: 30px 10px; }
-
-.portada p {
-  max-width: 550px;
-  margin: auto;
-}
-
-/* CARTA COMPLETA */
-
-.carta {
-  display: none;
-  background: rgba(255,255,255,.85);
-  border: 2px solid #ddc9ec;
-  border-radius: 22px;
-  padding: 30px 23px;
-  margin: 30px auto;
-  text-align: left;
-  box-shadow: 0 12px 30px #8056a020;
-}
-
-.carta.visible {
-  display: block;
-  animation: aparecer 1s ease;
-}
-
-.carta h2 {
+  min-height: 100vh;
+  padding: 35px 17px 60px;
   text-align: center;
-  margin-bottom: 25px;
+  background: linear-gradient(180deg,#f8efff,#f3e8fa,#fff8fc);
+  animation: appear 1s ease;
 }
 
-.carta p { margin: 15px 0; }
+.main-title {
+  font-size: 2.2rem;
+  color: #825ba0;
+  margin: 15px 0 8px;
+}
 
-.firma {
-  text-align: right;
-  color: #8056a0;
+.subtitle {
+  color: #886e99;
   font-style: italic;
-  margin-top: 25px;
+  margin-bottom: 30px;
 }
 
-/* GALERÍA DE FOTOS IMPRESAS */
-
-.marco-galeria {
-  background: #e9def0;
-  padding: 24px 16px;
-  border: 1px solid #d5c2e4;
-  border-radius: 20px;
-  box-shadow: inset 0 0 20px #ffffff66,0 12px 30px #8056a022;
+.section {
+  max-width: 650px;
+  margin: 38px auto;
 }
 
-.foto-impresa {
+.section h2 {
+  color: #936bb0;
+  font-size: 1.6rem;
+}
+
+.love-message {
+  line-height: 1.9;
+  font-size: 1.08rem;
+  padding: 0 8px;
+}
+
+/* POLAROID */
+.polaroid-area {
   width: 100%;
-  max-width: 430px;
-  margin: auto;
-  padding: 12px 12px 48px;
-  background: #fff;
-  box-shadow: 0 12px 28px #39234a33;
+  max-width: 390px;
+  margin: 25px auto;
+  padding: 18px 12px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px #60476e25;
   transform: rotate(-1deg);
-  transition: opacity .4s,transform .5s;
-  cursor: pointer;
 }
 
-.foto-impresa.cambiando {
-  opacity: 0;
-  transform: rotate(3deg) scale(.94);
-}
-
-.foto-impresa img {
-  display: block;
+.polaroid-photo {
   width: 100%;
-  height: 370px;
-  object-fit: contain;
-  background: #f4edf7;
+  height: 360px;
+  background: #eee5f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.texto-foto {
-  margin-top: 14px;
-  color: #8056a0;
-  font-size: 1rem;
+.polaroid-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  display: block;
+}
+
+.polaroid-caption {
+  min-height: 55px;
+  padding: 15px 5px 4px;
+  color: #725783;
+  font-size: 1.05rem;
   font-style: italic;
 }
 
-.controles {
+.gallery-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 18px 0 10px;
+  gap: 17px;
+  margin: 18px auto;
 }
 
-.indicador {
-  color: #987bb0;
+.gallery-controls button {
+  background: #a27bbd;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 18px;
+  font-size: 1rem;
+}
+
+#photoNumber {
+  color: #76598c;
   font-size: .95rem;
-  margin: 12px;
 }
 
-.miniaturas {
-  display: flex;
-  justify-content: center;
-  gap: 9px;
-  flex-wrap: wrap;
-  margin-top: 18px;
+#photoError {
+  color: #a34b6b;
+  font-size: .9rem;
+  line-height: 1.5;
+  padding: 10px;
 }
 
-.miniaturas img {
-  width: 52px;
-  height: 52px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 2px solid transparent;
-  opacity: .6;
-  cursor: pointer;
-  transition: .3s;
+/* CONTADOR Y CANCIÓN */
+.counter {
+  display: inline-block;
+  padding: 20px 25px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 7px 20px #70548018;
+  color: #805d9a;
+  font-size: 1.25rem;
+  line-height: 1.7;
 }
 
-.miniaturas img.activa {
-  border-color: #8056a0;
-  opacity: 1;
-  transform: scale(1.1);
+.song {
+  padding: 22px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 7px 20px #70548018;
 }
 
-/* AMPLIAR FOTO */
+.song a {
+  color: #966ab0;
+  font-weight: bold;
+  text-decoration: none;
+}
 
-.modal {
+/* SORPRESA */
+#surprise {
+  display: none;
+  margin: 25px auto;
+  padding: 25px;
+  max-width: 500px;
+  background: white;
+  border-radius: 15px;
+  line-height: 1.9;
+  animation: appear .8s ease;
+}
+
+/* FOTO AMPLIADA */
+#zoom {
   display: none;
   position: fixed;
-  z-index: 150;
+  z-index: 50;
   inset: 0;
-  background: rgba(30,15,40,.95);
+  background: #170d20ee;
   align-items: center;
   justify-content: center;
   padding: 15px;
 }
 
-.modal.visible {
-  display: flex;
-  animation: aparecer .3s ease;
-}
-
-.modal img {
-  max-width: 92%;
-  max-height: 78vh;
+#zoom img {
+  max-width: 95%;
+  max-height: 85%;
   object-fit: contain;
-  border: 8px solid white;
 }
 
-.cerrar {
+#closeZoom {
   position: absolute;
-  top: 15px;
+  top: 20px;
   right: 22px;
+  border: none;
   color: white;
-  font-size: 38px;
-  cursor: pointer;
+  background: transparent;
+  font-size: 2rem;
 }
 
-/* CONTADOR Y SECCIONES */
-
-.tarjeta {
-  background: rgba(255,255,255,.85);
-  border: 2px solid #ddc9ec;
-  border-radius: 20px;
-  padding: 25px 18px;
-  box-shadow: 0 8px 22px #8056a020;
+.footer {
+  margin-top: 45px;
+  color: #9b7ba9;
+  font-style: italic;
 }
 
-.numero {
-  font-size: 3rem;
-  color: #8056a0;
-  font-weight: bold;
-  margin: 10px;
-}
-
-.cancion {
-  background: linear-gradient(135deg,#eee1f7,#f9f4fc);
-}
-
-.cancion a {
-  display: inline-block;
-  margin-top: 15px;
-  color: #8056a0;
-  font-weight: bold;
-}
-
-.sorpresa {
-  display: none;
-  background: white;
-  border: 2px dashed #b99bd1;
-  border-radius: 20px;
-  padding: 28px 20px;
-  margin-top: 25px;
-}
-
-.sorpresa.visible {
-  display: block;
-  animation: aparecer 1s ease;
-}
-
-.sorpresa p { margin: 13px 0; }
-
-/* CORAZONES */
-
-.corazon {
-  position: fixed;
-  bottom: -35px;
-  z-index: 200;
-  pointer-events: none;
-  animation: flotar 4s linear forwards;
-}
-
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes flotar {
-  to {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-footer {
-  margin-top: 55px;
-  color: #987bb0;
-  font-size: .95rem;
-}
-
-@media(max-width:500px) {
-  .foto-impresa img { height: 290px; }
-  .contenedor { padding-left: 13px; padding-right: 13px; }
-  .carta { padding: 23px 17px; }
+@media(max-width:400px) {
+  .polaroid-photo { height: 310px; }
+  .main-title { font-size: 1.9rem; }
 }
 </style>
 </head>
 
-<body class="bloqueado">
+<body>
 
-<!-- PRIMERA PANTALLA -->
-
+<!-- SOBRE -->
 <section id="inicio">
-  <div class="decoracion">🌷 ♡ 💜 ♡ 🌷</div>
-  <h1 class="inicio-titulo">Para Denisse</h1>
-  <p class="inicio-texto">
-    Preparé algo especial para ti.
-    Solo tienes que abrir este pequeño regalo. 💌
-  </p>
-
-  <div class="sobre" id="sobre" onclick="abrirExperiencia()"></div>
-
-  <button class="boton" id="botonAbrir" onclick="abrirExperiencia()">
-    Abrir mi regalo 💜
-  </button>
+  <h1>Una pequeña sorpresa para ti 💌</h1>
+  <div class="envelope" id="envelope"
+       role="button" tabindex="0" aria-label="Abrir carta"></div>
+  <div class="envelope-label">Toca el sobre para abrirlo</div>
 </section>
 
-<!-- CARTA DE APERTURA -->
-
-<section id="cartaInicial">
-  <div class="carta-papel">
-    <div class="decoracion">♡ 💌 ♡</div>
-    <h2>Antes de comenzar...</h2>
-
-    <p>Mi querida Denisse:</p>
+<!-- CARTA DE CUMPLEAÑOS -->
+<section id="carta" class="hidden">
+  <div class="letter">
+    <h2>Para mi querida Denisse: 💜</h2>
 
     <p>
-      Hoy quiero regalarte algo diferente. Algo que hice pensando
-      en ti, en nosotros y en cada pequeño momento que se ha
-      convertido en un recuerdo especial.
+      Hoy es un día muy especial, porque es el día en que nació
+      una persona que, sin darse cuenta, se ha convertido en
+      alguien demasiado importante para mí.
+    </p>
+
+    <p>
+      Quiero aprovechar tu cumpleaños para recordarte lo mucho
+      que significas en mi vida. A veces siento que las palabras
+      se quedan cortas para expresar todo lo que quisiera decirte,
+      pero aun así quiero intentarlo.
     </p>
 
     <p>
       Quiero que sepas que eres mi primer pensamiento al despertar
-      y mi último pensamiento antes de dormir. Me importa cómo estás,
-      cómo te sientes y que siempre estés bien.
+      y uno de los últimos antes de cerrar los ojos. Me gusta saber
+      de ti, preguntarme cómo estás, cómo estuvo tu día y si te
+      encuentras bien. Porque tu tranquilidad, tu felicidad y tu
+      bienestar me importan muchísimo. No es simplemente querer
+      hablar contigo, es querer saber que estás bien.
     </p>
 
     <p>
-      Te admiro por la persona que eres, por tu inteligencia,
-      por lo interesante que resulta conocerte y por todo lo
-      especial que hay en ti.
+      Admiro muchísimo la persona que eres. Me pareces alguien
+      importante, interesante e inteligente; alguien a quien
+      siempre vale la pena escuchar, conocer y descubrir un
+      poquito más. Me gusta tu manera de pensar y quiero que
+      nunca dudes de lo valiosa que eres.
     </p>
 
     <p>
-      Quiero que disfrutes este pequeño regalo tanto como yo
-      disfruté preparándolo.
+      En este día deseo que la vida te regale muchísimas razones
+      para sonreír, que puedas cumplir tus sueños, que nunca te
+      falten motivos para sentirte orgullosa de ti misma y que
+      recibas todo lo bonito que mereces.
     </p>
 
-    <p class="centrado" style="color:#8056a0;font-style:italic">
-      Hay algo que quiero mostrarte... 💜
+    <p>
+      No sé qué nos tenga preparado el futuro, pero sí sé que
+      hoy me siento muy afortunado de compartir esta parte de
+      mi vida contigo.
     </p>
 
-    <button class="boton" id="botonContinuar" onclick="iniciarD()">
-      Continuar ✨
-    </button>
+    <p>
+      <strong>Feliz cumpleaños, mi amor.</strong> Gracias por
+      existir, por ser tú y por permitirme quererte.
+    </p>
+
+    <p>
+      Espero poder seguir celebrando muchos cumpleaños a tu lado
+      y crear contigo recuerdos que algún día podamos mirar
+      con una sonrisa.
+    </p>
+
+    <p><strong>Te amo, Denisse. Hoy y todos los días. ❤️</strong></p>
+
+    <button class="primary" id="continue">Continuar 💜</button>
   </div>
 </section>
 
-<!-- ESCENA DE CORAZONES Y LETRA D -->
-
-<section id="escenaD">
-  <canvas id="lluvia"></canvas>
-  <div class="letraD" id="letraD">D</div>
-  <div class="mensajeD" id="mensajeD">
-    Una inicial, un nombre y una persona muy especial: Denisse. 💜
-  </div>
+<!-- ANIMACIÓN DE CORAZONES FORMANDO LA D -->
+<section id="corazones" class="hidden">
+  <canvas id="heartCanvas"></canvas>
 </section>
 
 <!-- CONTENIDO PRINCIPAL -->
+<main id="contenido" class="hidden">
 
-<main class="contenedor" id="contenido">
+  <h1 class="main-title">Feliz cumpleaños, Denisse 💜</h1>
+  <p class="subtitle">Un pequeño lugar donde guardé un poquito de nosotros</p>
 
-  <header class="portada">
-    <div class="decoracion">🌷 ♡ 💜 ♡ 🌷</div>
-    <p class="subtitulo">Un pequeño universo hecho especialmente para ti</p>
-    <h1>Mi querida Denisse</h1>
-    <p>
-      Porque hay personas que llegan a nuestra vida y hacen que
-      todo tenga un significado más bonito. Para mí, tú eres esa persona.
+  <section class="section">
+    <h2>Nuestros recuerdos 📸</h2>
+    <p class="love-message">
+      Cada fotografía guarda un momento que me gusta recordar.
+      Y aunque una imagen no pueda guardar todo lo que siento,
+      estas seis son una pequeña parte de lo bonito que es tenerte.
     </p>
-    <div class="decoracion">♡ ♡ ♡</div>
-  </header>
 
-  <!-- CARTA -->
+    <div class="polaroid-area">
+      <div class="polaroid-photo">
+        <img id="galleryImage" src="" alt="Nuestro recuerdo">
+      </div>
+      <div class="polaroid-caption" id="caption"></div>
+      <div id="photoError" class="hidden">
+        No se pudo cargar esta fotografía. Comprueba que el archivo
+        esté junto a index.html y que su nombre coincida exactamente.
+      </div>
+    </div>
 
-  <section class="seccion">
-    <article class="carta visible">
-      <h2>Una carta para ti ♡</h2>
+    <div class="gallery-controls">
+      <button onclick="changePhoto(-1)">❮ Anterior</button>
+      <span id="photoNumber">1 / 6</span>
+      <button onclick="changePhoto(1)">Siguiente ❯</button>
+    </div>
 
-      <p>Mi querida Denisse:</p>
-
-      <p>
-        Quiero que sepas lo inmensamente especial que eres para mí.
-        Desde que llegaste a mi vida, has conseguido que muchos
-        momentos tengan una luz diferente.
-      </p>
-
-      <p>
-        Eres mi primer pensamiento al despertar y mi último pensamiento
-        antes de dormir. Me importa cómo estás, cómo te sientes,
-        qué te preocupa y que nunca te falten motivos para estar bien.
-      </p>
-
-      <p>
-        Te admiro muchísimo. Admiro lo importante que eres, lo interesante
-        que resulta conocerte y esa inteligencia que te hace ser una
-        persona tan especial. Me encanta descubrir cada día un poquito
-        más de ti.
-      </p>
-
-      <p>
-        Desde aquel 1 de febrero de 2026 comenzó esta historia que quiero
-        cuidar con todo mi corazón. Quiero seguir compartiendo momentos
-        contigo, escuchándote, apoyándote y estando presente en los días
-        buenos y también en los difíciles.
-      </p>
-
-      <p>
-        No quiero que nunca dudes de lo mucho que vales. Mereces cosas
-        hermosas, mereces cumplir tus sueños y mereces sentirte amada
-        todos los días.
-      </p>
-
-      <p>
-        Hoy, en tu cumpleaños, deseo que la vida te regale muchísimas
-        alegrías. Ojalá pueda seguir acompañándote y celebrando cada
-        una de ellas.
-      </p>
-
-      <p>
-        Gracias por ser tú, por existir y por formar parte de mi vida.
-        Te amo muchísimo, Denisse. ❤️
-      </p>
-
-      <p class="firma">
-        Con todo mi amor,<br>
-        alguien que te elige cada día. 💜
-      </p>
-    </article>
+    <p style="font-size:.85rem;color:#987da5">
+      Toca la fotografía para verla más grande.
+    </p>
   </section>
 
-  <!-- FOTOGRAFÍAS -->
-
-  <section class="seccion">
-    <h2>Nuestros pequeños recuerdos 📸</h2>
-    <p class="subtitulo">
-      Cada fotografía guarda un pedacito de nuestra historia.
-    </p>
-
-    <div class="marco-galeria">
-
-      <div class="foto-impresa" id="fotoImpresion" onclick="abrirFoto()">
-        <img id="fotoGrande"
-          src="fe016056-e828-4f26-b9e2-e33d0910418a.jpeg"
-          alt="Nuestro recuerdo">
-        <p class="texto-foto" id="textoFoto">Un recuerdo para siempre ♡</p>
-      </div>
-
-      <p class="indicador" id="indicador">Fotografía 1 de 6</p>
-
-      <div class="controles">
-        <button class="boton" onclick="anterior()">
-          ← Anterior
-        </button>
-        <button class="boton" onclick="siguiente()">
-          Siguiente recuerdo →
-        </button>
-      </div>
-
-      <div class="miniaturas" id="miniaturas"></div>
-
-      <p class="subtitulo" style="margin-top:15px">
-        Toca una fotografía para ampliarla.
-      </p>
+  <section class="section">
+    <h2>Desde que comenzó lo nuestro 💞</h2>
+    <div class="counter">
+      <div id="daysTogether">Calculando...</div>
+      <small>Y espero que sean muchísimos más.</small>
     </div>
   </section>
 
-  <!-- FOTO AMPLIADA -->
-
-  <div class="modal" id="modal" onclick="cerrarFoto()">
-    <span class="cerrar">&times;</span>
-    <img id="fotoModal" src="" alt="Fotografía ampliada"
-      onclick="event.stopPropagation()">
-  </div>
-
-  <!-- CONTADOR -->
-
-  <section class="seccion tarjeta">
-    <h2>El tiempo de nuestra historia 💞</h2>
-    <p>Desde el 1 de febrero de 2026...</p>
-    <div class="numero" id="dias">0</div>
-    <p>días de esta historia que tanto amo.</p>
-  </section>
-
-  <!-- CANCIÓN -->
-
-  <section class="seccion tarjeta cancion">
+  <section class="section">
     <h2>Nuestra canción 🎶</h2>
-    <p>
-      Porque hay canciones que, al escucharlas,
-      inevitablemente nos recuerdan a alguien.
-    </p>
-
-    <p style="margin-top:15px">
-      <strong>Enamorado tuyo</strong><br>
-      El Cuarteto de Nos
-    </p>
-
-    <a href="https://www.youtube.com/results?search_query=El+Cuarteto+de+Nos+Enamorado+Tuyo"
-       target="_blank" rel="noopener noreferrer">
-      Escuchar nuestra canción ♡
-    </a>
+    <div class="song">
+      <p>Enamorado tuyo</p>
+      <p>El Cuarteto de Nos</p>
+      <a href="https://www.youtube.com/results?search_query=El+Cuarteto+de+Nos+Enamorado+tuyo"
+         target="_blank" rel="noopener">
+        Escuchar nuestra canción ♡
+      </a>
+    </div>
   </section>
 
-  <!-- SORPRESA FINAL -->
-
-  <section class="seccion">
-    <h2>Antes de terminar... 💌</h2>
-    <p class="subtitulo">
-      Todavía tengo algo más que quiero que recuerdes.
-    </p>
-
-    <button class="boton" onclick="mostrarSorpresa()">
-      Descubre tu sorpresa ✨
+  <section class="section">
+    <h2>Algo más para ti... 💌</h2>
+    <button class="primary" id="surpriseButton">
+      Abrir mi última sorpresa ❤️
     </button>
 
-    <div class="sorpresa" id="sorpresa">
-      <div class="decoracion">💜 🌷 💜</div>
-
+    <div id="surprise">
+      <h2>Te amo, Denisse 💜</h2>
       <p>
-        Si pudiera volver al principio y elegir nuevamente,
-        volvería a querer coincidir contigo.
+        Si pudiera elegir nuevamente, volvería a querer coincidir
+        contigo. Gracias por existir, por ser tú y por hacer que
+        mi vida tenga momentos tan especiales.
       </p>
-
       <p>
-        Quiero verte cumplir tus sueños, celebrar tus logros,
-        acompañarte cuando lo necesites y recordarte lo increíble
-        que eres.
+        No quiero que olvides lo valiosa que eres. Mereces cosas
+        bonitas, tranquilidad, felicidad y muchísimo amor.
       </p>
-
       <p>
-        No necesito un día especial para decirte lo importante
-        que eres para mí, pero hoy quiero recordártelo de una
-        manera diferente.
+        Y aquí estaré, queriéndote y deseando verte feliz.
       </p>
-
-      <h2 style="margin-top:20px">Te amo, Denisse. ❤️</h2>
-      <p>Feliz cumpleaños, mi amor. ♡</p>
+      <h2>Con todo mi amor. ❤️</h2>
     </div>
   </section>
 
-  <footer>
-    Hecho con amor, pensando en ti. 💜
-    <p>5 de noviembre de 2026</p>
-  </footer>
-
+  <div class="footer">
+    Hecho con mucho amor, solamente para ti. 💜
+  </div>
 </main>
 
+<!-- VISOR DE FOTOGRAFÍAS -->
+<div id="zoom">
+  <button id="closeZoom" aria-label="Cerrar">✕</button>
+  <img id="zoomImage" src="" alt="Fotografía ampliada">
+</div>
+
 <script>
-/* INICIO Y SECUENCIA */
+/* ELEMENTOS */
+const inicio = document.getElementById("inicio");
+const carta = document.getElementById("carta");
+const envelope = document.getElementById("envelope");
+const corazones = document.getElementById("corazones");
+const contenido = document.getElementById("contenido");
 
-let experienciaIniciada = false;
-
-function abrirExperiencia() {
-  if (experienciaIniciada) return;
-  experienciaIniciada = true;
-
-  document.getElementById("sobre").classList.add("abierto");
+/* ABRIR SOBRE */
+function openLetter() {
+  envelope.classList.add("open");
 
   setTimeout(() => {
-    document.getElementById("inicio").classList.add("oculto");
-
-    document.getElementById("cartaInicial").classList.add("visible");
-
-    lanzarCorazones(25);
-  }, 900);
+    inicio.classList.add("hidden");
+    carta.classList.remove("hidden");
+    window.scrollTo(0,0);
+  },650);
 }
 
-/* TRANSICIÓN HACIA LA D */
+envelope.addEventListener("click",openLetter);
 
-function iniciarD() {
-  document.getElementById("cartaInicial").style.display = "none";
+envelope.addEventListener("keydown",(event) => {
+  if(event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openLetter();
+  }
+});
 
-  const escena = document.getElementById("escenaD");
-  escena.classList.add("visible");
+/* CORAZONES QUE FORMAN LA D */
+const canvas = document.getElementById("heartCanvas");
+const ctx = canvas.getContext("2d");
 
-  comenzarLluvia();
+let particles = [];
+let animationFrame;
+let animationStart = 0;
+let pixelRatio = 1;
+
+function heartShape(x,y,size) {
+  ctx.save();
+  ctx.translate(x,y);
+  ctx.scale(size/32,size/32);
+  ctx.beginPath();
+  ctx.moveTo(0,10);
+  ctx.bezierCurveTo(-28,-8,-15,-25,0,-13);
+  ctx.bezierCurveTo(15,-25,28,-8,0,10);
+  ctx.fill();
+  ctx.restore();
 }
 
-/* LLUVIA Y FORMACIÓN DE LA D */
+function createDParticles() {
+  const width = canvas.width;
+  const height = canvas.height;
 
-function comenzarLluvia() {
-  const canvas = document.getElementById("lluvia");
-  const ctx = canvas.getContext("2d");
-  const letra = document.getElementById("letraD");
-  const mensaje = document.getElementById("mensajeD");
+  const offscreen = document.createElement("canvas");
+  offscreen.width = width;
+  offscreen.height = height;
 
-  const ancho = window.innerWidth;
-  const alto = window.innerHeight;
+  const off = offscreen.getContext("2d");
+  const fontSize = Math.min(width*.72,height*.68);
 
-  canvas.width = ancho * devicePixelRatio;
-  canvas.height = alto * devicePixelRatio;
-  ctx.scale(devicePixelRatio, devicePixelRatio);
+  off.fillStyle = "#ffffff";
+  off.textAlign = "center";
+  off.textBaseline = "middle";
+  off.font = "bold "+fontSize+"px Georgia";
+  off.fillText("D",width/2,height/2);
 
-  const puntos = [];
-  const escala = Math.min(ancho / 430, alto / 650, 1);
-  const centroX = ancho / 2;
-  const centroY = alto / 2 - 20;
+  const pixels = off.getImageData(0,0,width,height).data;
+  const spacing = Math.max(7,Math.round(width/75));
+  const targets = [];
 
-  // Contorno de una D formado por partículas.
-  for (let t = 0; t < Math.PI * 2; t += 0.055) {
-    const x = Math.cos(t);
-    const y = Math.sin(t);
+  for(let y=0;y<height;y+=spacing) {
+    for(let x=0;x<width;x+=spacing) {
+      const index=(y*width+x)*4+3;
 
-    puntos.push({
-      x: centroX + (75 * escala * x) + (75 * escala * Math.max(0, x)),
-      y: centroY + 125 * escala * y
-    });
+      if(pixels[index]>100) targets.push({x,y});
+    }
   }
 
-  // Línea vertical de la D.
-  for (let y = -125; y <= 125; y += 9) {
-    puntos.push({
-      x: centroX - 75 * escala,
-      y: centroY + y * escala
-    });
-  }
-
-  const corazones = Array.from({length: 95}, () => ({
-    x: Math.random() * ancho,
-    y: Math.random() * alto - alto,
-    velocidad: 1 + Math.random() * 3,
-    tamano: 10 + Math.random() * 13,
-    destino: null,
-    progreso: 0
+  particles=targets.map(target=>({
+    x:Math.random()*width,
+    y:Math.random()*height,
+    targetX:target.x,
+    targetY:target.y,
+    size:7+Math.random()*6,
+    delay:Math.random()*700
   }));
+}
 
-  puntos.forEach((p, i) => {
-    if (corazones[i]) corazones[i].destino = p;
-  });
+function resizeCanvas() {
+  pixelRatio=Math.min(window.devicePixelRatio||1,2);
+  canvas.width=Math.floor(window.innerWidth*pixelRatio);
+  canvas.height=Math.floor(window.innerHeight*pixelRatio);
+  createDParticles();
+}
 
-  let tiempo = 0;
-  let animacion;
+function drawHearts(time) {
+  const elapsed=time-animationStart;
 
-  function dibujar() {
-    tiempo++;
-    ctx.clearRect(0, 0, ancho, alto);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.save();
+  ctx.scale(pixelRatio,pixelRatio);
 
-    corazones.forEach((c, i) => {
-      if (tiempo < 90) {
-        c.y += c.velocidad * 2;
-        if (c.y > alto + 20) c.y = -20;
-      } else if (c.destino) {
-        c.progreso = Math.min(1, c.progreso + 0.018);
+  for(const particle of particles) {
+    const localTime=Math.max(0,elapsed-particle.delay);
+    const progress=Math.min(1,localTime/2300);
+    const eased=1-Math.pow(1-progress,3);
 
-        c.x += (c.destino.x - c.x) * 0.055;
-        c.y += (c.destino.y - c.y) * 0.055;
-      }
+    const x=particle.x/pixelRatio+
+      (particle.targetX/pixelRatio-particle.x/pixelRatio)*eased;
 
-      ctx.font = c.tamano + "px serif";
-      ctx.fillStyle = i % 2 === 0 ? "#a47ac3" : "#d18cbd";
-      ctx.fillText("♥", c.x, c.y);
-    });
+    const y=particle.y/pixelRatio+
+      (particle.targetY/pixelRatio-particle.y/pixelRatio)*eased;
 
-    if (tiempo === 100) {
-      letra.classList.add("visible");
-      mensaje.classList.add("visible");
-    }
-
-    if (tiempo < 250) {
-      animacion = requestAnimationFrame(dibujar);
-    } else {
-      setTimeout(() => {
-        cancelarAnimationFrame(animacion);
-        escenaFinal();
-      }, 1200);
-    }
+    ctx.fillStyle="#b67bd2";
+    heartShape(x,y,particle.size/pixelRatio);
   }
 
-  dibujar();
+  ctx.restore();
+
+  if(elapsed<4400) {
+    animationFrame=requestAnimationFrame(drawHearts);
+  } else {
+    setTimeout(()=>{
+      corazones.classList.add("fade");
+
+      setTimeout(()=>{
+        corazones.classList.add("hidden");
+        contenido.classList.remove("hidden");
+        window.scrollTo(0,0);
+      },1400);
+    },350);
+  }
 }
 
-function escenaFinal() {
-  const escena = document.getElementById("escenaD");
-  escena.style.transition = "opacity 1.5s";
-  escena.style.opacity = "0";
-
-  setTimeout(() => {
-    escena.style.display = "none";
-
-    const contenido = document.getElementById("contenido");
-    contenido.classList.add("visible");
-
-    document.body.classList.remove("bloqueado");
-
-    window.scrollTo({top: 0, behavior: "smooth"});
-  }, 1500);
+function startHeartAnimation() {
+  corazones.classList.remove("hidden","fade");
+  resizeCanvas();
+  cancelAnimationFrame(animationFrame);
+  animationStart=performance.now();
+  animationFrame=requestAnimationFrame(drawHearts);
 }
 
-/* GALERÍA */
+document.getElementById("continue").addEventListener("click",()=>{
+  carta.classList.add("hidden");
+  startHeartAnimation();
+});
 
-const fotos = [
+/* SEIS FOTOGRAFÍAS */
+const photos=[
   "fe016056-e828-4f26-b9e2-e33d0910418a.jpeg",
   "f70a81be-b3f3-4172-a17b-155a2a91d46b.jpeg",
   "e309a08c-6669-47fc-8b4e-60378666dd45.jpeg",
@@ -915,150 +657,86 @@ const fotos = [
   "3f068ec0-a641-4ebb-b0e3-35c6f8e343a4.jpeg"
 ];
 
-const frases = [
-  "Un recuerdo para siempre ♡",
-  "Un momento especial 💜",
-  "De esos días que no olvido 🌷",
-  "Tú haces todo más bonito 💗",
-  "Un recuerdo que guardo con cariño ✨",
-  "Mi persona especial 💜"
+const captions=[
+  "Un momento que guardo con cariño 💜",
+  "Qué bonito coincidir contigo",
+  "De mis recuerdos favoritos",
+  "Siempre hay algo especial en nosotros",
+  "Una fotografía, muchísimos sentimientos",
+  "Y todavía nos quedan muchos recuerdos por crear ❤️"
 ];
 
-let indice = 0;
+let currentPhoto=0;
 
-const fotoGrande = document.getElementById("fotoGrande");
-const fotoModal = document.getElementById("fotoModal");
-const indicador = document.getElementById("indicador");
-const impresion = document.getElementById("fotoImpresion");
+function showPhoto() {
+  const image=document.getElementById("galleryImage");
+  const error=document.getElementById("photoError");
 
-function actualizarGaleria() {
-  impresion.classList.add("cambiando");
+  error.classList.add("hidden");
+  image.src=photos[currentPhoto];
+  image.alt="Recuerdo "+(currentPhoto+1)+" de 6";
 
-  setTimeout(() => {
-    fotoGrande.src = fotos[indice];
-    fotoModal.src = fotos[indice];
-
-    document.getElementById("textoFoto").textContent = frases[indice];
-
-    indicador.textContent =
-      "Fotografía " + (indice + 1) + " de " + fotos.length;
-
-    document.querySelectorAll(".miniaturas img").forEach((mini, i) => {
-      mini.classList.toggle("activa", i === indice);
-    });
-
-    impresion.classList.remove("cambiando");
-    impresion.style.transform =
-      indice % 2 === 0 ? "rotate(-1deg)" : "rotate(1deg)";
-  }, 250);
+  document.getElementById("caption").textContent=captions[currentPhoto];
+  document.getElementById("photoNumber").textContent=
+    (currentPhoto+1)+" / "+photos.length;
 }
 
-function siguiente() {
-  indice = (indice + 1) % fotos.length;
-  actualizarGaleria();
-}
-
-function anterior() {
-  indice = (indice - 1 + fotos.length) % fotos.length;
-  actualizarGaleria();
-}
-
-function abrirFoto() {
-  fotoModal.src = fotos[indice];
-  document.getElementById("modal").classList.add("visible");
-}
-
-function cerrarFoto() {
-  document.getElementById("modal").classList.remove("visible");
-}
-
-function crearMiniaturas() {
-  const contenedor = document.getElementById("miniaturas");
-
-  fotos.forEach((foto, i) => {
-    const mini = document.createElement("img");
-    mini.src = foto;
-    mini.alt = "Miniatura " + (i + 1);
-
-    mini.addEventListener("click", () => {
-      indice = i;
-      actualizarGaleria();
-    });
-
-    contenedor.appendChild(mini);
-  });
-
-  actualizarGaleria();
-}
-
-/* CONTADOR */
-
-function actualizarDias() {
-  const inicio = new Date(2026, 1, 1);
-  const hoy = new Date();
-
-  inicio.setHours(0,0,0,0);
-  hoy.setHours(0,0,0,0);
-
-  const diferencia = Math.floor(
-    (hoy - inicio) / (1000 * 60 * 60 * 24)
-  );
-
-  document.getElementById("dias").textContent =
-    Math.max(0, diferencia);
-}
-
-/* SORPRESA */
-
-function mostrarSorpresa() {
-  const sorpresa = document.getElementById("sorpresa");
-  sorpresa.classList.add("visible");
-
-  sorpresa.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-
-  lanzarCorazones(25);
-}
-
-/* CORAZONES FLOTANTES */
-
-function lanzarCorazones(cantidad = 18) {
-  const simbolos = ["💜","💗","💕","♡","🌷"];
-
-  for (let i = 0; i < cantidad; i++) {
-    const elemento = document.createElement("div");
-
-    elemento.className = "corazon";
-    elemento.textContent =
-      simbolos[Math.floor(Math.random() * simbolos.length)];
-
-    elemento.style.left = Math.random() * 100 + "vw";
-    elemento.style.animationDuration =
-      (3 + Math.random() * 3) + "s";
-    elemento.style.fontSize =
-      (17 + Math.random() * 15) + "px";
-
-    document.body.appendChild(elemento);
-
-    setTimeout(() => elemento.remove(), 6500);
-  }
-}
-
-/* CONTROLES DEL TECLADO */
-
-document.addEventListener("keydown", evento => {
-  if (evento.key === "Escape") cerrarFoto();
-
-  if (document.getElementById("modal").classList.contains("visible")) {
-    if (evento.key === "ArrowRight") siguiente();
-    if (evento.key === "ArrowLeft") anterior();
-  }
+document.getElementById("galleryImage").addEventListener("error",()=>{
+  document.getElementById("photoError").classList.remove("hidden");
 });
 
-crearMiniaturas();
-actualizarDias();
+function changePhoto(direction) {
+  currentPhoto=(currentPhoto+direction+photos.length)%photos.length;
+  showPhoto();
+}
+
+showPhoto();
+
+/* AMPLIAR FOTO */
+function openZoom() {
+  document.getElementById("zoomImage").src=photos[currentPhoto];
+  document.getElementById("zoom").style.display="flex";
+}
+
+function closeZoom() {
+  document.getElementById("zoom").style.display="none";
+}
+
+document.getElementById("galleryImage").addEventListener("click",openZoom);
+document.getElementById("closeZoom").addEventListener("click",closeZoom);
+
+document.getElementById("zoom").addEventListener("click",event=>{
+  if(event.target.id==="zoom") closeZoom();
+});
+
+/* CONTADOR DESDE EL 1 DE FEBRERO DE 2026 */
+function updateCounter() {
+  const beginning=new Date(2026,1,1);
+  const today=new Date();
+  const difference=today-beginning;
+
+  const days=Math.max(0,Math.floor(
+    difference/(1000*60*60*24)
+  ));
+
+  document.getElementById("daysTogether").textContent=
+    days+(days===1?" día juntos":" días juntos");
+}
+
+updateCounter();
+
+/* SORPRESA FINAL */
+document.getElementById("surpriseButton").addEventListener("click",()=>{
+  const surprise=document.getElementById("surprise");
+
+  surprise.style.display="block";
+  document.getElementById("surpriseButton").style.display="none";
+
+  surprise.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+});
 </script>
 
 </body>
