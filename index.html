@@ -9,7 +9,9 @@
 <title>Para Denisse 💜</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -19,8 +21,89 @@ body {
   overflow-x: hidden;
 }
 
-button { font-family: inherit; cursor: pointer; }
-.hidden { display: none !important; }
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* CONTRASEÑA */
+#passwordScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: linear-gradient(145deg,#f9efff,#e5d0f5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  text-align: center;
+}
+
+.password-card {
+  width: min(380px,100%);
+  padding: 30px 22px;
+  background: #fffdfb;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px #72598730;
+}
+
+.password-card h1 {
+  color: #80599c;
+  font-size: 1.9rem;
+}
+
+.password-card p {
+  line-height: 1.7;
+}
+
+.password-icon {
+  font-size: 3rem;
+  margin: 10px;
+}
+
+#passwordInput {
+  width: 180px;
+  padding: 14px;
+  border: 2px solid #c6a5dc;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 10px;
+  color: #694c80;
+  background: white;
+  outline: none;
+}
+
+#passwordInput:focus {
+  border-color: #966ab0;
+}
+
+#passwordError {
+  color: #a34b6b;
+  min-height: 24px;
+  font-size: .9rem;
+}
+
+/* BOTONES */
+.primary {
+  border: none;
+  border-radius: 30px;
+  padding: 13px 25px;
+  color: white;
+  background: #9b72b8;
+  font-size: 1rem;
+  margin-top: 18px;
+  box-shadow: 0 5px 15px #8c65a533;
+}
+
+.primary:active {
+  transform: scale(.97);
+}
 
 /* SOBRE */
 #inicio {
@@ -71,11 +154,12 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 4;
 }
 
-.envelope.open::before { transform: rotateX(180deg); }
+.envelope.open::before {
+  transform: rotateX(180deg);
+}
 
 .envelope-label {
   margin-top: 25px;
-  font-size: 1rem;
   color: #694c80;
 }
 
@@ -105,20 +189,11 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 1.8rem;
 }
 
-.letter p { font-size: 1.04rem; }
-
-.primary {
-  border: none;
-  border-radius: 30px;
-  padding: 13px 25px;
-  color: white;
-  background: #9b72b8;
-  font-size: 1rem;
-  margin-top: 18px;
-  box-shadow: 0 5px 15px #8c65a533;
+.letter p {
+  font-size: 1.04rem;
 }
 
-/* CORAZONES */
+/* ANIMACIÓN DE CORAZONES */
 #corazones {
   position: fixed;
   inset: 0;
@@ -246,7 +321,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 10px;
 }
 
-/* CONTADOR Y CANCIÓN */
+/* CONTADOR */
 .counter {
   display: inline-block;
   padding: 20px 25px;
@@ -258,6 +333,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.7;
 }
 
+/* CANCIÓN */
 .song {
   padding: 22px;
   border-radius: 16px;
@@ -271,7 +347,7 @@ button { font-family: inherit; cursor: pointer; }
   text-decoration: none;
 }
 
-/* SORPRESA */
+/* SORPRESA FINAL */
 #surprise {
   display: none;
   margin: 25px auto;
@@ -318,25 +394,72 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media(max-width:400px) {
-  .polaroid-photo { height: 310px; }
-  .main-title { font-size: 1.9rem; }
+  .polaroid-photo {
+    height: 310px;
+  }
+
+  .main-title {
+    font-size: 1.9rem;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- PANTALLA DE CONTRASEÑA -->
+<section id="passwordScreen">
+  <div class="password-card">
+    <div class="password-icon">🔐💜</div>
+    <h1>Un pequeño secreto para ti</h1>
+    <p>Hay algo muy especial esperándote...</p>
+    <p>Introduce nuestra fecha especial 💌</p>
+
+    <input
+      id="passwordInput"
+      type="password"
+      inputmode="numeric"
+      maxlength="4"
+      placeholder="••••"
+      autocomplete="off"
+      aria-label="Contraseña de cuatro números"
+    >
+
+    <br>
+
+    <button class="primary" id="unlockButton">
+      Desbloquear 💜
+    </button>
+
+    <p id="passwordError" aria-live="polite"></p>
+    <small style="color:#987da5">
+      Una fecha, una historia y una persona especial.
+    </small>
+  </div>
+</section>
+
 <!-- SOBRE -->
-<section id="inicio">
+<section id="inicio" class="hidden">
   <h1>Una pequeña sorpresa para ti 💌</h1>
+
   <div class="envelope" id="envelope"
-       role="button" tabindex="0" aria-label="Abrir carta"></div>
-  <div class="envelope-label">Toca el sobre para abrirlo</div>
+       role="button" tabindex="0" aria-label="Abrir carta">
+  </div>
+
+  <div class="envelope-label">
+    Toca el sobre para abrirlo
+  </div>
 </section>
 
 <!-- CARTA DE CUMPLEAÑOS -->
@@ -398,13 +521,17 @@ button { font-family: inherit; cursor: pointer; }
       con una sonrisa.
     </p>
 
-    <p><strong>Te amo, Denisse. Hoy y todos los días. ❤️</strong></p>
+    <p>
+      <strong>Te amo, Denisse. Hoy y todos los días. ❤️</strong>
+    </p>
 
-    <button class="primary" id="continue">Continuar 💜</button>
+    <button class="primary" id="continue">
+      Continuar 💜
+    </button>
   </div>
 </section>
 
-<!-- ANIMACIÓN DE CORAZONES FORMANDO LA D -->
+<!-- CORAZONES FORMANDO LA D -->
 <section id="corazones" class="hidden">
   <canvas id="heartCanvas"></canvas>
 </section>
@@ -413,10 +540,13 @@ button { font-family: inherit; cursor: pointer; }
 <main id="contenido" class="hidden">
 
   <h1 class="main-title">Feliz cumpleaños, Denisse 💜</h1>
-  <p class="subtitle">Un pequeño lugar donde guardé un poquito de nosotros</p>
+  <p class="subtitle">
+    Un pequeño lugar donde guardé un poquito de nosotros
+  </p>
 
   <section class="section">
     <h2>Nuestros recuerdos 📸</h2>
+
     <p class="love-message">
       Cada fotografía guarda un momento que me gusta recordar.
       Y aunque una imagen no pueda guardar todo lo que siento,
@@ -427,7 +557,9 @@ button { font-family: inherit; cursor: pointer; }
       <div class="polaroid-photo">
         <img id="galleryImage" src="" alt="Nuestro recuerdo">
       </div>
+
       <div class="polaroid-caption" id="caption"></div>
+
       <div id="photoError" class="hidden">
         No se pudo cargar esta fotografía. Comprueba que el archivo
         esté junto a index.html y que su nombre coincida exactamente.
@@ -455,11 +587,16 @@ button { font-family: inherit; cursor: pointer; }
 
   <section class="section">
     <h2>Nuestra canción 🎶</h2>
+
     <div class="song">
       <p>Enamorado tuyo</p>
       <p>El Cuarteto de Nos</p>
-      <a href="https://www.youtube.com/results?search_query=El+Cuarteto+de+Nos+Enamorado+tuyo"
-         target="_blank" rel="noopener">
+
+      <a
+        href="https://www.youtube.com/results?search_query=El+Cuarteto+de+Nos+Enamorado+tuyo"
+        target="_blank"
+        rel="noopener"
+      >
         Escuchar nuestra canción ♡
       </a>
     </div>
@@ -467,24 +604,29 @@ button { font-family: inherit; cursor: pointer; }
 
   <section class="section">
     <h2>Algo más para ti... 💌</h2>
+
     <button class="primary" id="surpriseButton">
       Abrir mi última sorpresa ❤️
     </button>
 
     <div id="surprise">
       <h2>Te amo, Denisse 💜</h2>
+
       <p>
         Si pudiera elegir nuevamente, volvería a querer coincidir
         contigo. Gracias por existir, por ser tú y por hacer que
         mi vida tenga momentos tan especiales.
       </p>
+
       <p>
         No quiero que olvides lo valiosa que eres. Mereces cosas
         bonitas, tranquilidad, felicidad y muchísimo amor.
       </p>
+
       <p>
         Y aquí estaré, queriéndote y deseando verte feliz.
       </p>
+
       <h2>Con todo mi amor. ❤️</h2>
     </div>
   </section>
@@ -492,6 +634,7 @@ button { font-family: inherit; cursor: pointer; }
   <div class="footer">
     Hecho con mucho amor, solamente para ti. 💜
   </div>
+
 </main>
 
 <!-- VISOR DE FOTOGRAFÍAS -->
@@ -501,14 +644,39 @@ button { font-family: inherit; cursor: pointer; }
 </div>
 
 <script>
-/* ELEMENTOS */
+
+/* CONTRASEÑA 0102 */
+function unlockPage() {
+  const password = document.getElementById("passwordInput").value;
+  const error = document.getElementById("passwordError");
+
+  if (password === "0102") {
+    document.getElementById("passwordScreen").classList.add("hidden");
+    document.getElementById("inicio").classList.remove("hidden");
+  } else {
+    error.textContent =
+      "Esa no es nuestra fecha especial. Inténtalo otra vez 💜";
+
+    document.getElementById("passwordInput").value = "";
+    document.getElementById("passwordInput").focus();
+  }
+}
+
+document.getElementById("unlockButton")
+  .addEventListener("click", unlockPage);
+
+document.getElementById("passwordInput")
+  .addEventListener("keydown", event => {
+    if (event.key === "Enter") unlockPage();
+  });
+
+/* ABRIR SOBRE */
 const inicio = document.getElementById("inicio");
 const carta = document.getElementById("carta");
 const envelope = document.getElementById("envelope");
 const corazones = document.getElementById("corazones");
 const contenido = document.getElementById("contenido");
 
-/* ABRIR SOBRE */
 function openLetter() {
   envelope.classList.add("open");
 
@@ -521,14 +689,14 @@ function openLetter() {
 
 envelope.addEventListener("click",openLetter);
 
-envelope.addEventListener("keydown",(event) => {
+envelope.addEventListener("keydown",event => {
   if(event.key === "Enter" || event.key === " ") {
     event.preventDefault();
     openLetter();
   }
 });
 
-/* CORAZONES QUE FORMAN LA D */
+/* CORAZONES FORMANDO LA D */
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -550,30 +718,29 @@ function heartShape(x,y,size) {
 }
 
 function createDParticles() {
-  const width = canvas.width;
-  const height = canvas.height;
+  const width=canvas.width;
+  const height=canvas.height;
 
-  const offscreen = document.createElement("canvas");
-  offscreen.width = width;
-  offscreen.height = height;
+  const offscreen=document.createElement("canvas");
+  offscreen.width=width;
+  offscreen.height=height;
 
-  const off = offscreen.getContext("2d");
-  const fontSize = Math.min(width*.72,height*.68);
+  const off=offscreen.getContext("2d");
+  const fontSize=Math.min(width*.72,height*.68);
 
-  off.fillStyle = "#ffffff";
-  off.textAlign = "center";
-  off.textBaseline = "middle";
-  off.font = "bold "+fontSize+"px Georgia";
+  off.fillStyle="#ffffff";
+  off.textAlign="center";
+  off.textBaseline="middle";
+  off.font="bold "+fontSize+"px Georgia";
   off.fillText("D",width/2,height/2);
 
-  const pixels = off.getImageData(0,0,width,height).data;
-  const spacing = Math.max(7,Math.round(width/75));
-  const targets = [];
+  const pixels=off.getImageData(0,0,width,height).data;
+  const spacing=Math.max(7,Math.round(width/75));
+  const targets=[];
 
   for(let y=0;y<height;y+=spacing) {
     for(let x=0;x<width;x+=spacing) {
       const index=(y*width+x)*4+3;
-
       if(pixels[index]>100) targets.push({x,y});
     }
   }
@@ -647,7 +814,7 @@ document.getElementById("continue").addEventListener("click",()=>{
   startHeartAnimation();
 });
 
-/* SEIS FOTOGRAFÍAS */
+/* GALERÍA DE SEIS FOTOGRAFÍAS */
 const photos=[
   "fe016056-e828-4f26-b9e2-e33d0910418a.jpeg",
   "f70a81be-b3f3-4172-a17b-155a2a91d46b.jpeg",
@@ -677,6 +844,7 @@ function showPhoto() {
   image.alt="Recuerdo "+(currentPhoto+1)+" de 6";
 
   document.getElementById("caption").textContent=captions[currentPhoto];
+
   document.getElementById("photoNumber").textContent=
     (currentPhoto+1)+" / "+photos.length;
 }
@@ -692,7 +860,7 @@ function changePhoto(direction) {
 
 showPhoto();
 
-/* AMPLIAR FOTO */
+/* AMPLIAR FOTOGRAFÍA */
 function openZoom() {
   document.getElementById("zoomImage").src=photos[currentPhoto];
   document.getElementById("zoom").style.display="flex";
@@ -702,8 +870,11 @@ function closeZoom() {
   document.getElementById("zoom").style.display="none";
 }
 
-document.getElementById("galleryImage").addEventListener("click",openZoom);
-document.getElementById("closeZoom").addEventListener("click",closeZoom);
+document.getElementById("galleryImage")
+  .addEventListener("click",openZoom);
+
+document.getElementById("closeZoom")
+  .addEventListener("click",closeZoom);
 
 document.getElementById("zoom").addEventListener("click",event=>{
   if(event.target.id==="zoom") closeZoom();
@@ -713,8 +884,8 @@ document.getElementById("zoom").addEventListener("click",event=>{
 function updateCounter() {
   const beginning=new Date(2026,1,1);
   const today=new Date();
-  const difference=today-beginning;
 
+  const difference=today-beginning;
   const days=Math.max(0,Math.floor(
     difference/(1000*60*60*24)
   ));
@@ -726,17 +897,19 @@ function updateCounter() {
 updateCounter();
 
 /* SORPRESA FINAL */
-document.getElementById("surpriseButton").addEventListener("click",()=>{
-  const surprise=document.getElementById("surprise");
+document.getElementById("surpriseButton")
+  .addEventListener("click",()=>{
+    const surprise=document.getElementById("surprise");
 
-  surprise.style.display="block";
-  document.getElementById("surpriseButton").style.display="none";
+    surprise.style.display="block";
+    document.getElementById("surpriseButton").style.display="none";
 
-  surprise.scrollIntoView({
-    behavior:"smooth",
-    block:"center"
+    surprise.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
   });
-});
+
 </script>
 
 </body>
