@@ -4,226 +4,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ede2f7">
 <title>Para Denisse 💜</title>
 
 <style>
 :root {
-  --fondo: #f8f3fc;
-  --lila: #ede2f7;
-  --lavanda: #d8c3ea;
-  --morado: #b99ad8;
-  --violeta: #8965a8;
-  --oscuro: #654879;
-  --blanco: #fffaff;
+  --fondo:#f8f3fc;
+  --lila:#ede2f7;
+  --lavanda:#d8c3ea;
+  --morado:#b99ad8;
+  --violeta:#8965a8;
+  --oscuro:#654879;
+  --blanco:#fffaff;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
 
-body {
-  margin: 0;
-  font-family: Georgia, serif;
-  color: var(--oscuro);
-  background: linear-gradient(145deg, #f8f3fc, #eee2f7, #fffaff);
-  text-align: center;
+body{
+  margin:0;
+  font-family:Georgia,serif;
+  color:var(--oscuro);
+  background:linear-gradient(145deg,#f8f3fc,#eee2f7,#fffaff);
+  text-align:center;
 }
 
-button {
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
+.oculto{display:none!important}
+
+button{
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
 }
 
-.oculto { display: none !important; }
-
-/* PORTADA Y SOBRE */
-
-#portada {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
+#portada{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:25px;
 }
 
-#portada h1 {
-  color: var(--violeta);
-  font-size: 2.3rem;
-  margin-bottom: 8px;
+#portada h1{
+  color:var(--violeta);
+  font-size:2.3rem;
+  margin-bottom:8px;
 }
 
-#portada p { line-height: 1.7; }
+#portada p{line-height:1.8}
 
-.sobre {
-  position: relative;
-  width: 230px;
-  height: 165px;
-  margin: 35px auto;
-  background: #b99ad8;
-  border-radius: 12px;
-  box-shadow: 0 15px 35px #8965a844;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  animation: flotar 3s infinite ease-in-out;
+.sobre{
+  position:relative;
+  width:230px;
+  height:165px;
+  margin:35px auto;
+  background:#b99ad8;
+  border-radius:12px;
+  box-shadow:0 15px 35px #8965a844;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  animation:flotar 3s infinite ease-in-out;
 }
 
-.sobre::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #d8c3ea;
-  clip-path: polygon(0 0, 100% 0, 50% 65%);
-  border-radius: 12px 12px 0 0;
+.sobre:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#d8c3ea;
+  clip-path:polygon(0 0,100% 0,50% 65%);
+  border-radius:12px 12px 0 0;
 }
 
-.sello {
-  position: relative;
-  z-index: 2;
-  background: #8965a8;
-  color: white;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 26px;
-  box-shadow: 0 3px 12px #65487955;
+.sello{
+  position:relative;
+  z-index:2;
+  background:#8965a8;
+  color:white;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:26px;
 }
 
-.abrir {
-  padding: 14px 28px;
-  background: var(--violeta);
-  color: white;
-  border-radius: 30px;
-  font-size: 1rem;
-  box-shadow: 0 5px 15px #8965a844;
+.abrir{
+  padding:14px 28px;
+  background:var(--violeta);
+  color:white;
+  border-radius:30px;
+  font-size:1rem;
+  box-shadow:0 5px 15px #8965a844;
 }
 
-@keyframes flotar {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-9px); }
+@keyframes flotar{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
 }
 
-/* CONTENIDO */
-
-main {
-  max-width: 720px;
-  margin: auto;
-  padding: 20px 17px 50px;
+main{
+  max-width:760px;
+  margin:auto;
+  padding:20px 16px 45px;
 }
 
-.encabezado { padding: 35px 10px; }
+.encabezado{padding:35px 10px}
 
-.encabezado h1 {
-  font-size: 2.4rem;
-  color: var(--violeta);
+.encabezado h1{
+  font-size:2.35rem;
+  color:var(--violeta);
 }
 
-.card {
-  background: var(--blanco);
-  border: 1px solid #eadcf5;
-  border-radius: 24px;
-  padding: 28px 20px;
-  margin: 22px 0;
-  box-shadow: 0 8px 25px #8965a818;
+.card{
+  background:var(--blanco);
+  border:1px solid #eadcf5;
+  border-radius:24px;
+  padding:27px 19px;
+  margin:22px 0;
+  box-shadow:0 8px 25px #8965a818;
 }
 
-h2 {
-  color: var(--violeta);
-  font-size: 1.65rem;
+h2{color:var(--violeta);font-size:1.6rem}
+
+p{line-height:1.9;font-size:1.04rem}
+
+.decoracion{
+  font-size:24px;
+  letter-spacing:7px;
+  margin:12px;
 }
 
-p {
-  line-height: 1.9;
-  font-size: 1.04rem;
-}
-
-.decoracion {
-  font-size: 25px;
-  letter-spacing: 8px;
-  margin: 12px;
-}
-
-.firma {
-  color: var(--violeta);
-  font-style: italic;
-  font-size: 1.3rem;
+.firma{
+  color:var(--violeta);
+  font-style:italic;
+  font-size:1.3rem;
 }
 
 /* GALERÍA */
 
-.galeria {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+.galeria{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+  margin-top:22px;
 }
 
-.foto {
-  min-height: 155px;
-  border-radius: 17px;
-  background: linear-gradient(145deg, #ede2f7, #d8c3ea);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
-  color: var(--oscuro);
+.foto{
+  background:#ede2f7;
+  border:5px solid #ede2f7;
+  border-radius:17px;
+  overflow:hidden;
+  box-shadow:0 5px 15px #8965a822;
+  cursor:pointer;
+  transition:transform .2s;
 }
 
-/* CONTADORES */
+.foto:active{transform:scale(.97)}
 
-.numero {
-  color: var(--violeta);
-  font-size: 1.9rem;
-  font-weight: bold;
-  margin: 15px 0;
+.foto img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
 }
 
-/* BOTONES */
-
-.boton {
-  display: inline-block;
-  background: var(--violeta);
-  color: white;
-  padding: 13px 22px;
-  border-radius: 28px;
-  text-decoration: none;
-  margin-top: 10px;
-  font-size: 1rem;
+.foto p{
+  font-size:.88rem;
+  margin:9px 3px;
+  line-height:1.4;
+  font-weight:bold;
 }
 
-#sorpresa {
-  background: var(--lila);
-  padding: 20px;
-  border-radius: 18px;
-  margin-top: 20px;
-  line-height: 1.9;
+/* VISOR DE FOTOS */
+
+#visor{
+  position:fixed;
+  inset:0;
+  background:#24152feF;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
 }
 
-footer {
-  padding: 25px 10px;
-  color: #8965a8;
+#visor img{
+  max-width:100%;
+  max-height:82vh;
+  object-fit:contain;
+  border:5px solid #d8c3ea;
+  border-radius:15px;
 }
 
-.corazon {
-  position: fixed;
-  bottom: -30px;
-  pointer-events: none;
-  animation: subir 4s linear forwards;
-  z-index: 10;
+.cerrar{
+  position:absolute;
+  top:18px;
+  right:20px;
+  background:#fffaff;
+  color:#654879;
+  border-radius:50%;
+  width:43px;
+  height:43px;
+  font-size:24px;
 }
 
-@keyframes subir {
-  to {
-    transform: translateY(-110vh) rotate(25deg);
-    opacity: 0;
+.numero{
+  color:var(--violeta);
+  font-size:1.9rem;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+.boton{
+  display:inline-block;
+  background:var(--violeta);
+  color:white;
+  padding:13px 22px;
+  border-radius:28px;
+  text-decoration:none;
+  margin-top:10px;
+}
+
+#sorpresa{
+  background:var(--lila);
+  padding:20px;
+  border-radius:18px;
+  margin-top:20px;
+  line-height:1.9;
+}
+
+footer{
+  padding:25px 10px;
+  color:#8965a8;
+}
+
+.corazon{
+  position:fixed;
+  bottom:-30px;
+  pointer-events:none;
+  animation:subir 4s linear forwards;
+  z-index:40;
+}
+
+@keyframes subir{
+  to{
+    transform:translateY(-110vh) rotate(25deg);
+    opacity:0;
   }
 }
 
-@media(max-width:380px) {
-  #portada h1 { font-size: 1.9rem; }
-  .encabezado h1 { font-size: 2rem; }
+@media(max-width:380px){
+  #portada h1{font-size:1.9rem}
+  .encabezado h1{font-size:2rem}
+  .galeria{gap:9px}
 }
 </style>
 </head>
@@ -248,179 +283,233 @@ footer {
 
 <main id="contenido" class="oculto">
 
-  <header class="encabezado">
-    <div class="decoracion">✧ 🌷 💜 🌷 ✧</div>
-    <h1>Feliz cumpleaños, Denisse</h1>
-    <p>Hoy quiero recordarte lo maravillosa que eres.</p>
-  </header>
+<header class="encabezado">
+  <div class="decoracion">✧ 🌷 💜 🌷 ✧</div>
+  <h1>Feliz cumpleaños, Denisse</h1>
+  <p>Hoy quiero recordarte lo maravillosa que eres.</p>
+</header>
 
-  <section class="card">
-    <div class="decoracion">💜 ✨ 💜</div>
-    <h2>Mi niña hermosa</h2>
+<section class="card">
+  <div class="decoracion">💜 ✨ 💜</div>
+  <h2>Mi niña hermosa</h2>
 
-    <p>
-      No sé exactamente por dónde empezar, porque cuando se trata de ti
-      siempre siento que las palabras se quedan cortas.
-      Pero hoy quiero intentar expresarte un poquito de todo lo que
-      significas para mí.
-    </p>
+  <p>
+    No sé exactamente por dónde empezar, porque cuando se trata de ti
+    siempre siento que las palabras se quedan cortas. Pero hoy quiero
+    intentar expresarte un poquito de todo lo que significas para mí.
+  </p>
 
-    <p>
-      Primero quiero desearte un cumpleaños muy feliz. Espero que este
-      nuevo año de vida esté lleno de momentos bonitos, sueños cumplidos,
-      oportunidades y muchísimas razones para sonreír.
-      Deseo de corazón que la vida te regale cosas tan bonitas como
-      las que tú transmites.
-    </p>
+  <p>
+    Primero quiero desearte un cumpleaños muy feliz. Espero que este
+    nuevo año de vida esté lleno de momentos bonitos, sueños cumplidos,
+    oportunidades y muchísimas razones para sonreír.
+    Deseo de corazón que la vida te regale cosas tan bonitas como
+    las que tú transmites.
+  </p>
 
-    <p>
-      Quiero que sepas que te admiro muchísimo. Me encanta la persona
-      que eres, lo importante que puedes llegar a ser, lo interesante
-      que resulta conocerte y esa inteligencia que tienes.
-      Me gusta descubrir cada parte de ti y seguir encontrando motivos
-      para sentirme orgulloso de tenerte en mi vida.
-    </p>
+  <p>
+    Quiero que sepas que te admiro muchísimo. Me encanta la persona
+    que eres, lo importante que puedes llegar a ser, lo interesante
+    que resulta conocerte y esa inteligencia que tienes.
+    Me gusta descubrir cada parte de ti y seguir encontrando motivos
+    para sentirme orgulloso de tenerte en mi vida.
+  </p>
 
-    <p>
-      Me importas más de lo que a veces consigo expresar.
-      Me preocupa que estés bien, que te sientas tranquila,
-      que no te falten motivos para sonreír y que siempre recuerdes
-      lo valiosa que eres.
-    </p>
+  <p>
+    Me importas más de lo que a veces consigo expresar.
+    Me preocupa que estés bien, que te sientas tranquila,
+    que no te falten motivos para sonreír y que siempre recuerdes
+    lo valiosa que eres.
+  </p>
 
-    <p>
-      Eres mi primer pensamiento al despertar y mi último pensamiento
-      antes de dormir. Incluso en los días más normales, de alguna
-      manera siempre terminas apareciendo en mi mente.
-    </p>
+  <p>
+    Eres mi primer pensamiento al despertar y mi último pensamiento
+    antes de dormir. Incluso en los días más normales, de alguna
+    manera siempre terminas apareciendo en mi mente.
+  </p>
 
-    <p>
-      No quiero que esta carta sea solamente un mensaje de cumpleaños.
-      Quiero que sea un pequeño recordatorio de que tienes a alguien
-      que te quiere, te admira, se preocupa por ti y desea verte feliz.
-    </p>
+  <p>
+    No quiero que esta carta sea solamente un mensaje de cumpleaños.
+    Quiero que sea un pequeño recordatorio de que tienes a alguien
+    que te quiere, te admira, se preocupa por ti y desea verte feliz.
+  </p>
 
-    <p>
-      Gracias por ser tú, por compartir conmigo esta historia y por
-      hacer que desde aquel 1 de febrero de 2026 mi vida tenga
-      recuerdos que quiero conservar.
-    </p>
+  <p>
+    Gracias por ser tú, por compartir conmigo esta historia y por
+    hacer que desde aquel 1 de febrero de 2026 mi vida tenga
+    recuerdos que quiero conservar.
+  </p>
 
-    <p>
-      Ojalá podamos seguir escribiendo muchos capítulos juntos,
-      llenos de risas, cariño, aventuras y momentos que algún día
-      recordemos con una sonrisa.
-    </p>
+  <p>
+    Ojalá podamos seguir escribiendo muchos capítulos juntos,
+    llenos de risas, cariño, aventuras y momentos que algún día
+    recordemos con una sonrisa.
+  </p>
 
-    <p class="firma">
-      Te quiero muchísimo, Denisse. 💜
-    </p>
-  </section>
+  <p class="firma">Te quiero muchísimo, Denisse. 💜</p>
+</section>
 
-  <section class="card">
-    <h2>Nuestros recuerdos 📸</h2>
-    <p>
-      Cada fotografía guarda un pedacito de nuestra historia.
-      Aquí tendremos un lugar para nuestros momentos favoritos.
-    </p>
+<section class="card">
+  <div class="decoracion">🌷 ✨ 🌷</div>
+  <h2>Nuestros recuerdos</h2>
+  <p>
+    Seis fotografías, muchos sentimientos y recuerdos
+    que quiero conservar siempre.
+  </p>
 
-    <div class="galeria">
-      <div class="foto">🌷 Nuestra primera foto</div>
-      <div class="foto">💜 Un momento especial</div>
-      <div class="foto">✨ Una sonrisa tuya</div>
-      <div class="foto">🥰 Un recuerdo juntos</div>
+  <div class="galeria">
+
+    <div class="foto" onclick="ampliarFoto(0)">
+      <img src="fe016056-e828-4f26-b9e2-e33d0910418a.jpeg"
+           alt="Nuestro recuerdo 1">
+      <p>Un momento especial 💜</p>
     </div>
 
-    <p><small>Pronto podremos poner nuestras fotografías reales aquí.</small></p>
-  </section>
-
-  <section class="card">
-    <h2>Desde que comenzó nuestra historia</h2>
-    <p>1 de febrero de 2026</p>
-    <div class="numero" id="dias">...</div>
-    <p>días compartiendo esta historia tan bonita.</p>
-  </section>
-
-  <section class="card">
-    <h2>Una canción para ti 🎶</h2>
-    <p>
-      Hay canciones que parecen tener un poquito de nuestros sentimientos.
-      Esta siempre me hace pensar en ti.
-    </p>
-    <p><strong>Enamorado tuyo — El Cuarteto de Nos</strong></p>
-    <a class="boton"
-       href="https://open.spotify.com/search/Enamorado%20tuyo%20El%20Cuarteto%20de%20Nos"
-       target="_blank" rel="noopener">
-      Escuchar nuestra canción 🎵
-    </a>
-  </section>
-
-  <section class="card">
-    <h2>Una última sorpresa 💌</h2>
-    <p>
-      Todavía tengo algo más que decirte...
-    </p>
-
-    <button class="abrir" onclick="mostrarSorpresa()">
-      Toca aquí, mi amor 💜
-    </button>
-
-    <div id="sorpresa" class="oculto">
-      <h2>Siempre tú. ❤️</h2>
-      <p>
-        Si pudiera pedir un deseo para hoy, sería que nunca te falten
-        motivos para ser feliz, que nunca dudes de lo especial que eres
-        y que la vida te permita cumplir cada uno de tus sueños.
-      </p>
-      <p>
-        Y si me permites seguir siendo parte de tu historia,
-        quiero continuar demostrándote lo mucho que significas para mí.
-      </p>
-      <div class="decoracion">💜 🌷 ✨ 💜</div>
-      <p class="firma">Con todo mi cariño, para ti.</p>
+    <div class="foto" onclick="ampliarFoto(1)">
+      <img src="f70a81be-b3f3-4172-a17b-155a2a91d46b.jpeg"
+           alt="Nuestro recuerdo 2">
+      <p>Nosotros ✨</p>
     </div>
-  </section>
 
-  <footer>
-    Hecho con mucho amor, solamente para Denisse. 💜
-    <p>Una historia que quiero seguir escribiendo contigo.</p>
-  </footer>
+    <div class="foto" onclick="ampliarFoto(2)">
+      <img src="e309a08c-6669-47fc-8b4e-60378666dd45.jpeg"
+           alt="Nuestro recuerdo 3">
+      <p>Un recuerdo bonito 🌷</p>
+    </div>
+
+    <div class="foto" onclick="ampliarFoto(3)">
+      <img src="597240e2-Obd5-4bf3-ab83-b7522ea771af.jpeg"
+           alt="Nuestro recuerdo 4">
+      <p>Contigo ❤️</p>
+    </div>
+
+    <div class="foto" onclick="ampliarFoto(4)">
+      <img src="91c0a467-cOed-4c8d-9dcc-a0376968e739.jpeg"
+           alt="Nuestro recuerdo 5">
+      <p>Un instante nuestro 💗</p>
+    </div>
+
+    <div class="foto" onclick="ampliarFoto(5)">
+      <img src="3f068ec0-a641-4ebb-b0e3-35c6f8e343a4.jpeg"
+           alt="Nuestro recuerdo 6">
+      <p>Y muchos más por venir 💜</p>
+    </div>
+
+  </div>
+
+  <p><small>Toca cualquier fotografía para verla más grande.</small></p>
+</section>
+
+<section class="card">
+  <h2>Desde que comenzó nuestra historia</h2>
+  <p>1 de febrero de 2026</p>
+  <div class="numero" id="dias">...</div>
+  <p>días compartiendo esta historia tan bonita.</p>
+</section>
+
+<section class="card">
+  <h2>Una canción para ti 🎶</h2>
+  <p>
+    Hay canciones que parecen tener un poquito de nuestros sentimientos.
+    Esta siempre me hace pensar en ti.
+  </p>
+  <p><strong>Enamorado tuyo — El Cuarteto de Nos</strong></p>
+
+  <a class="boton"
+     href="https://open.spotify.com/search/Enamorado%20tuyo%20El%20Cuarteto%20de%20Nos"
+     target="_blank" rel="noopener">
+    Escuchar nuestra canción 🎵
+  </a>
+</section>
+
+<section class="card">
+  <h2>Una última sorpresa 💌</h2>
+  <p>Todavía tengo algo más que decirte...</p>
+
+  <button class="abrir" onclick="mostrarSorpresa()">
+    Toca aquí, mi amor 💜
+  </button>
+
+  <div id="sorpresa" class="oculto">
+    <h2>Siempre tú ❤️</h2>
+    <p>
+      Si pudiera pedir un deseo para hoy, sería que nunca te falten
+      motivos para ser feliz, que nunca dudes de lo especial que eres
+      y que la vida te permita cumplir cada uno de tus sueños.
+    </p>
+    <p>
+      Y si me permites seguir siendo parte de tu historia,
+      quiero continuar demostrándote lo mucho que significas para mí.
+    </p>
+    <div class="decoracion">💜 🌷 ✨ 💜</div>
+    <p class="firma">Con todo mi cariño, para ti.</p>
+  </div>
+</section>
+
+<footer>
+  Hecho con mucho amor, solamente para Denisse. 💜
+  <p>Una historia que quiero seguir escribiendo contigo.</p>
+</footer>
 
 </main>
 
+<div id="visor" class="oculto" onclick="cerrarFoto()">
+  <button class="cerrar" onclick="cerrarFoto()">×</button>
+  <img id="fotoGrande" src="" alt="Fotografía ampliada">
+</div>
+
 <script>
-function abrirRegalo() {
+const fotos = [
+  "fe016056-e828-4f26-b9e2-e33d0910418a.jpeg",
+  "f70a81be-b3f3-4172-a17b-155a2a91d46b.jpeg",
+  "e309a08c-6669-47fc-8b4e-60378666dd45.jpeg",
+  "597240e2-Obd5-4bf3-ab83-b7522ea771af.jpeg",
+  "91c0a467-cOed-4c8d-9dcc-a0376968e739.jpeg",
+  "3f068ec0-a641-4ebb-b0e3-35c6f8e343a4.jpeg"
+];
+
+function abrirRegalo(){
   document.getElementById("portada").classList.add("oculto");
   document.getElementById("contenido").classList.remove("oculto");
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 }
 
-function mostrarSorpresa() {
+function ampliarFoto(indice){
+  document.getElementById("fotoGrande").src = fotos[indice];
+  document.getElementById("visor").classList.remove("oculto");
+}
+
+function cerrarFoto(){
+  document.getElementById("visor").classList.add("oculto");
+}
+
+function mostrarSorpresa(){
   document.getElementById("sorpresa").classList.toggle("oculto");
   lanzarCorazones();
 }
 
-function lanzarCorazones() {
-  const simbolos = ["💜", "💗", "✨", "🌷"];
-  for (let i = 0; i < 18; i++) {
-    const corazon = document.createElement("div");
-    corazon.className = "corazon";
-    corazon.textContent =
-      simbolos[Math.floor(Math.random() * simbolos.length)];
-    corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.fontSize = (18 + Math.random() * 20) + "px";
-    document.body.appendChild(corazon);
-    setTimeout(() => corazon.remove(), 4000);
+function lanzarCorazones(){
+  const simbolos=["💜","💗","✨","🌷"];
+  for(let i=0;i<18;i++){
+    const elemento=document.createElement("div");
+    elemento.className="corazon";
+    elemento.textContent=simbolos[
+      Math.floor(Math.random()*simbolos.length)
+    ];
+    elemento.style.left=Math.random()*100+"vw";
+    elemento.style.fontSize=(18+Math.random()*20)+"px";
+    document.body.appendChild(elemento);
+    setTimeout(()=>elemento.remove(),4000);
   }
 }
 
-function actualizarDias() {
-  const inicio = new Date(2026, 1, 1);
-  const hoy = new Date();
-  hoy.setHours(0, 0, 0, 0);
-  const diferencia = Math.floor((hoy - inicio) / 86400000);
-  document.getElementById("dias").textContent =
-    diferencia >= 0 ? diferencia : "Nuestra historia comienza pronto";
+function actualizarDias(){
+  const inicio=new Date(2026,1,1);
+  const hoy=new Date();
+  hoy.setHours(0,0,0,0);
+  const diferencia=Math.floor((hoy-inicio)/86400000);
+  document.getElementById("dias").textContent=
+    diferencia>=0 ? diferencia : "Nuestra historia comienza pronto";
 }
 
 actualizarDias();
