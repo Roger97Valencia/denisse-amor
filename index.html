@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -347,6 +345,81 @@ button {
   text-decoration: none;
 }
 
+/* 29 RAZONES */
+.reasons-card {
+  max-width: 520px;
+  margin: 25px auto;
+  padding: 25px 20px;
+  background: #fffdfb;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px #72598725;
+}
+
+.reason-progress {
+  color: #987da5;
+  font-size: .95rem;
+  margin: 12px 0 18px;
+}
+
+.reason-number {
+  color: #a27bbd;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+}
+
+.reason-text {
+  min-height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 8px;
+  color: #694c80;
+  font-size: 1.35rem;
+  line-height: 1.6;
+  animation: appear .45s ease;
+}
+
+.reason-heart {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.reason-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 15px auto;
+}
+
+.reason-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e2d2ec;
+}
+
+.reason-dots span.active {
+  background: #986ab4;
+  transform: scale(1.35);
+}
+
+#reasonFinal {
+  display: none;
+  margin-top: 18px;
+  padding: 20px 15px;
+  background: #f8efff;
+  border-radius: 14px;
+  color: #704d89;
+  line-height: 1.8;
+  animation: appear .8s ease;
+}
+
+#reasonFinal h3 {
+  color: #9165ae;
+  font-size: 1.45rem;
+}
+
 /* SORPRESA FINAL */
 #surprise {
   display: none;
@@ -599,6 +672,32 @@ button {
       >
         Escuchar nuestra canción ♡
       </a>
+    </div>
+  </section>
+
+  <section class="section" id="reasonsSection">
+    <h2>29 razones por las que te amo 💜</h2>
+    <p class="love-message">
+      29 años de una persona maravillosa y 29 razones para recordarte
+      lo especial que eres para mí. Toca el botón para descubrirlas.
+    </p>
+
+    <div class="reasons-card">
+      <div class="reason-heart">💜</div>
+      <div class="reason-number" id="reasonNumber">RAZÓN 1 DE 29</div>
+      <div class="reason-progress" id="reasonProgress">Una razón a la vez...</div>
+      <div class="reason-text" id="reasonText" aria-live="polite">
+        Tu sonrisa.
+      </div>
+      <div class="reason-dots" id="reasonDots" aria-hidden="true"></div>
+      <button class="primary" id="nextReasonButton">
+        Descubrir otra razón ❤️
+      </button>
+      <div id="reasonFinal" aria-live="polite">
+        <h3>¿Qué acaso pensaste que solamente 29 cosas de ti son las que amo?</h3>
+        <p><strong>Te amo completamente, mi vida. ❤️</strong></p>
+        <p>Feliz cumpleaños, mi amor. Y que nunca se te olvide lo especial que eres para mí. 💜</p>
+      </div>
     </div>
   </section>
 
@@ -909,6 +1008,90 @@ document.getElementById("surpriseButton")
       block:"center"
     });
   });
+
+
+/* 29 RAZONES POR LAS QUE TE AMO */
+const reasons = [
+  "Tu sonrisa.",
+  "Tus ojos.",
+  "Tu mirada cuando me ves.",
+  "Tu forma de ser conmigo.",
+  "La manera en que me haces sentir amado.",
+  "Tu voz.",
+  "Tu risa, incluso cuando no puedo evitar reírme contigo.",
+  "Tus abrazos.",
+  "La forma en que me consientes.",
+  "Tu ternura.",
+  "Tu manera de preocuparte por mí.",
+  "Cómo puedes alegrarme el día.",
+  "Tu personalidad.",
+  "La confianza que me das.",
+  "Tu forma de demostrarme cariño.",
+  "Los pequeños detalles que tienes conmigo.",
+  "La paz que siento cuando estoy a tu lado.",
+  "Tu manera de hablarme.",
+  "Lo hermosa que eres, incluso cuando no te das cuenta.",
+  "Tu espontaneidad.",
+  "La forma en que me haces extrañarte.",
+  "Cada momento que compartimos.",
+  "Tus ocurrencias.",
+  "La complicidad que tenemos.",
+  "Cómo haces especiales los momentos más sencillos.",
+  "La mujer que eres.",
+  "Todo lo que hemos vivido juntos.",
+  "Que seas tú, simplemente tú.",
+  "Y todo eso que eres, incluso aquello que todavía estoy descubriendo de ti."
+];
+
+let currentReason = 0;
+
+function renderReason() {
+  const number = document.getElementById("reasonNumber");
+  const text = document.getElementById("reasonText");
+  const progress = document.getElementById("reasonProgress");
+  const dots = document.getElementById("reasonDots");
+  const button = document.getElementById("nextReasonButton");
+  const finalMessage = document.getElementById("reasonFinal");
+
+  number.textContent = "RAZÓN " + (currentReason + 1) + " DE 29";
+  text.textContent = reasons[currentReason];
+  progress.textContent = currentReason === 0
+    ? "Y esta es solamente la primera..."
+    : "Ya descubriste " + (currentReason + 1) + " de mis 29 razones.";
+
+  dots.innerHTML = "";
+  reasons.forEach((_, index) => {
+    const dot = document.createElement("span");
+    if (index <= currentReason) dot.classList.add("active");
+    dots.appendChild(dot);
+  });
+
+  if (currentReason === reasons.length - 1) {
+    button.textContent = "Descubrir el mensaje final 💌";
+  } else {
+    button.textContent = "Descubrir otra razón ❤️";
+  }
+
+  text.style.animation = "none";
+  void text.offsetWidth;
+  text.style.animation = "appear .45s ease";
+}
+
+document.getElementById("nextReasonButton").addEventListener("click", () => {
+  if (currentReason < reasons.length - 1) {
+    currentReason++;
+    renderReason();
+  } else {
+    document.getElementById("reasonFinal").style.display = "block";
+    document.getElementById("nextReasonButton").style.display = "none";
+    document.getElementById("reasonFinal").scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+});
+
+renderReason();
 
 </script>
 
